@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Tester</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <h1 class="navbar-title" data-i18n="navbar_title">Password Strength Tester</h1>
+            <div class="navbar-links">
+                <a href="#password-container" data-i18n="test_password">Test</a>
+                <a href="#password-generator" data-i18n="generate_password">Generate</a>
+            </div>
+            <span class="navbar-theme" id="theme-toggle">🌙</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <p data-i18n="header_text">Test the strength of your password securely. All testing is done locally in your browser - no passwords are stored or transmitted.</p>
+        </header>
+
+        <div class="card" id="password-container">
+            <h2 data-i18n="test_password">Test Your Password</h2>
+            <div class="input-group">
+                <input type="password" id="password-input" class="password-input" placeholder="Type or paste your password here" aria-label="Password input">
+                <span class="toggle-password" id="toggle-password">👁️</span>
+            </div>
+
+            <div class="strength-meter">
+                <div class="strength-meter-fill" id="strength-meter-fill"></div>
+            </div>
+
+            <div class="feedback" id="feedback">
+                <div class="feedback-heading"><span class="strength-icon" id="strength-icon">❓</span> Password strength: <span id="strength-text">None</span></div>
+                <ul class="feedback-list" id="feedback-list">
+                    <li>Enter a password to see strength analysis</li>
+                </ul>
+            </div>
+
+            <div class="crack-time" id="crack-time">
+                <span data-i18n="time_to_crack">Estimated time to crack</span>: <span id="time-to-crack">N/A</span>
+            </div>
+
+            <div class="criteria-list" id="criteria-list">
+                <div class="criteria-item">
+                    <span class="criteria-icon criteria-unmet" id="criteria-length">✓</span>
+                    <span class="criteria-text">At least 12 characters long</span>
+                </div>
+                <div class="criteria-item">
+                    <span class="criteria-icon criteria-unmet" id="criteria-lowercase">✓</span>
+                    <span class="criteria-text">Contains lowercase letters</span>
+                </div>
+                <div class="criteria-item">
+                    <span class="criteria-icon criteria-unmet" id="criteria-uppercase">✓</span>
+                    <span class="criteria-text">Contains uppercase letters</span>
+                </div>
+                <div class="criteria-item">
+                    <span class="criteria-icon criteria-unmet" id="criteria-numbers">✓</span>
+                    <span class="criteria-text">Contains numbers</span>
+                </div>
+                <div class="criteria-item">
+                    <span class="criteria-icon criteria-unmet" id="criteria-symbols">✓</span>
+                    <span class="criteria-text">Contains special characters</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="password-generator">
+            <h2 data-i18n="generate_password">Generate a Strong Password</h2>
+            <p>Use our secure generator to create a strong, random password.</p>
+
+            <div class="options-container">
+                <div class="option-item">
+                    <input type="number" id="length-input" min="8" max="64" value="16" style="width: 60px;">
+                    <label for="length-input" data-i18n="length">Length</label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" id="include-uppercase" checked>
+                    <label for="include-uppercase" data-i18n="uppercase">Uppercase</label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" id="include-lowercase" checked>
+                    <label for="include-lowercase" data-i18n="lowercase">Lowercase</label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" id="include-numbers" checked>
+                    <label for="include-numbers" data-i18n="numbers">Numbers</label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" id="include-symbols" checked>
+                    <label for="include-symbols" data-i18n="symbols">Symbols</label>
+                </div>
+            </div>
+
+            <button class="btn" id="generate-btn" aria-label="Generate strong password">
+                <span class="btn-icon">🔑</span><span data-i18n="generate_btn">Generate Strong Password</span>
+            </button>
+
+            <div class="generated-password-container" id="generated-password-container">
+                <div class="generated-password" id="generated-password"></div>
+                <button class="btn btn-copy" id="copy-btn" data-i18n="copy_btn">Copy</button>
+            </div>
+        </div>
+
+        <div class="card" id="info-section">
+            <h2 data-i18n="why_matters">Why Password Strength Matters</h2>
+            <p>Strong passwords are your first line of defense against unauthorized access to your accounts. A weak password can be cracked in seconds, while a strong one might take millions of years with current technology.</p>
+        </div>
+
+        <footer>
+            <p data-i18n="footer_text">This tool is for educational purposes only. All password testing is done locally in your browser. No passwords are stored or transmitted.</p>
+            <p>© 2025 Password Strength Tester</p>
+        </footer>
+    </div>
+
+    <div class="copy-notification" id="copy-notification">Password copied to clipboard!</div>
+
+    <script src="https://unpkg.com/i18next@23.11.5/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-browser-languagedetector@7.1.0/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="script.js"></script>
+</html>
